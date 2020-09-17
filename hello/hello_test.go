@@ -1,6 +1,7 @@
 package hello
 
 import (
+	"bytes"
 	"testing"
 )
 
@@ -39,6 +40,18 @@ func TestHello(t *testing.T) {
 		result := Hello(name, "")
 		expected := prefixHelloPortuguese + "world"
 		checkCorrectMessage(t, result, expected)
+	})
+
+	t.Run("Test simple hello", func(t *testing.T) {
+		buffer := bytes.Buffer{}
+		SimpleHello(&buffer, "Vanio")
+
+		result := buffer.String()
+		expected := "hello, Vanio"
+
+		if result != expected {
+			t.Errorf("result '%s' expected '%s'", result, expected)
+		}
 	})
 
 }
