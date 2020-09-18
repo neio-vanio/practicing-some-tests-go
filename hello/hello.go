@@ -1,5 +1,10 @@
 package hello
 
+import (
+	"fmt"
+	"io"
+)
+
 const prefixHelloPortuguese string = "Hello, "
 const prefixHelloSpanish string = "Hola, "
 const prefixHelloFrench string = "Bonjour, "
@@ -25,4 +30,13 @@ func prefixGet(idioma string) (prefix string) {
 	}
 	return
 
+}
+
+// SimpleHello for write
+func SimpleHello(writer io.Writer, name string) {
+	fmt.Fprintf(writer, "hello, %s", name)
+}
+
+func main() {
+	fmt.Println(Hello("Vanio", ""))
 }
