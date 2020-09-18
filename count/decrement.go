@@ -14,6 +14,27 @@ type Sleeper interface {
 	Sleep()
 }
 
+// SleeperConfig for sleep
+type SleeperConfig struct {
+	Duration time.Duration
+	Pausa    func(time.Duration)
+}
+
+// TimeSpy for test
+type TimeSpy struct {
+	DurationPausa time.Duration
+}
+
+// Pausa for timespy
+func (t *TimeSpy) Pausa(duration time.Duration) {
+	t.DurationPausa = duration
+}
+
+// Sleep for SleeperConfig
+func (s *SleeperConfig) Sleep() {
+	s.Pausa(s.Duration)
+}
+
 // SleeperSpy with qtd
 type SleeperSpy struct {
 	Qtd int
