@@ -1,9 +1,5 @@
 package hello
 
-import (
-	"fmt"
-)
-
 const prefixHelloPortuguese string = "Hello, "
 const prefixHelloSpanish string = "Hola, "
 const prefixHelloFrench string = "Bonjour, "
@@ -29,8 +25,4 @@ func prefixGet(idioma string) (prefix string) {
 	}
 	return
 
-}
-
-func main() {
-	fmt.Println(Hello("Vanio", ""))
 }
