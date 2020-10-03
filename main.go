@@ -1,13 +1,17 @@
 package main
 
 import (
+	"net/http"
 	"os"
-	"time"
 
-	"github.com/neio-vanio/practicing-some-tests-go/count"
+	writer "github.com/neio-vanio/practicing-some-tests-go/writer"
 )
 
 func main() {
-	sleeper := &count.SleeperConfig{1 * time.Second, time.Sleep}
-	count.Decrement(os.Stdout, sleeper)
+	writer.BeWelcome(os.Stdout, "welcome Vanio")
+
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		writer.BeWelcome(w, "welcome Vanio")
+	})
+	http.ListenAndServe(":8777", nil)
 }
